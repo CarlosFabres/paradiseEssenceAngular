@@ -59,8 +59,6 @@ export class LoginComponent {
     const usuario = usuarios.find((u: any) => u.email === email && u.password === password);
 
     if (usuario) {
-      console.log('Inicio de sesión exitoso');
-
       // Actualizar el estado de la sesión del usuario
       usuario.sesion = true;
       localStorage.setItem('usuarios', JSON.stringify(usuarios));

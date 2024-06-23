@@ -508,6 +508,7 @@ export class IndexComponent implements OnInit {
         }
         this.updateCartItemCount();
         this.updateCartTotal();
+        this.saveCartToLocalStorage();
     }
 
     /**
@@ -526,6 +527,7 @@ export class IndexComponent implements OnInit {
         }
         this.updateCartItemCount();
         this.updateCartTotal();
+        this.saveCartToLocalStorage();
     }
 
     // Actualizar el conteo de ítems en el carrito
@@ -557,6 +559,7 @@ export class IndexComponent implements OnInit {
     ngOnInit(): void {
         this.filteredProducts &#x3D; this.products;
         this.checkSession();
+        this.loadCartFromLocalStorage();
     }
 
     //Filtrar productos por precio y marca
@@ -613,6 +616,19 @@ export class IndexComponent implements OnInit {
             localStorage.setItem(&#x27;usuarios&#x27;, JSON.stringify(usuarios));
             this.sesionActiva &#x3D; false;
             this.router.navigate([&#x27;/index&#x27;]);
+        }
+    }
+
+     saveCartToLocalStorage(): void {
+        localStorage.setItem(&#x27;cart&#x27;, JSON.stringify(this.cart));
+    }
+
+    loadCartFromLocalStorage(): void {
+        const savedCart &#x3D; localStorage.getItem(&#x27;cart&#x27;);
+        if (savedCart) {
+            this.cart &#x3D; JSON.parse(savedCart);
+            this.updateCartItemCount();
+            this.updateCartTotal();
         }
     }
 }

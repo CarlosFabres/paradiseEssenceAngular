@@ -171,6 +171,8 @@
                 <td class="col-md-9">
                             <code>CommonModule</code>
                             <code>ReactiveFormsModule</code>
+                            <code>RouterOutlet</code>
+                            <code>RouterLink</code>
                 </td>
             </tr>
 
@@ -253,7 +255,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/login/login.component.ts:31</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/components/login/login.component.ts:32</a></div>
                             </td>
                         </tr>
 
@@ -332,8 +334,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="44"
-                                    class="link-to-prism">src/app/components/login/login.component.ts:44</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">src/app/components/login/login.component.ts:45</a></div>
                         </td>
                     </tr>
 
@@ -381,7 +383,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/login/login.component.ts:31</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/components/login/login.component.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -407,7 +409,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/components/login/login.component.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/login/login.component.ts:31</a></div>
                         </td>
                     </tr>
 
@@ -424,6 +426,7 @@
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from &#x27;@angular/forms&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
+import { RouterOutlet, RouterLink } from &#x27;@angular/router&#x27;;
 
 
 /**
@@ -443,7 +446,7 @@ import { Router } from &#x27;@angular/router&#x27;;
 @Component({
   selector: &#x27;app-login&#x27;,
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterOutlet, RouterLink],
   templateUrl: &#x27;./login.component.html&#x27;,
   styleUrl: &#x27;./login.component.scss&#x27;
 })
@@ -480,8 +483,6 @@ export class LoginComponent {
     const usuario &#x3D; usuarios.find((u: any) &#x3D;&gt; u.email &#x3D;&#x3D;&#x3D; email &amp;&amp; u.password &#x3D;&#x3D;&#x3D; password);
 
     if (usuario) {
-      console.log(&#x27;Inicio de sesión exitoso&#x27;);
-
       // Actualizar el estado de la sesión del usuario
       usuario.sesion &#x3D; true;
       localStorage.setItem(&#x27;usuarios&#x27;, JSON.stringify(usuarios));
@@ -495,6 +496,7 @@ export class LoginComponent {
       this.formErrors.push(&#x27;Correo electrónico o contraseña incorrectos.&#x27;);
     }
   }
+  
 
 }</code></pre>
     </div>
@@ -503,7 +505,7 @@ export class LoginComponent {
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container-fluid body&quot;&gt;
     &lt;nav class&#x3D;&quot;navbar navbar-expand-lg bg-body-tertiary sticky-top&quot;&gt;
         &lt;div class&#x3D;&quot;container-fluid&quot;&gt;
-            &lt;a class&#x3D;&quot;navbar-brand&quot; href&#x3D;&quot;/index&quot;&gt;
+            &lt;a class&#x3D;&quot;navbar-brand&quot; routerLink&#x3D;&quot;/index&quot;&gt;
                 &lt;img src&#x3D;&quot;assets/img/logoEmpresa.png&quot; alt&#x3D;&quot;Logo de la empresa&quot; width&#x3D;&quot;35&quot; height&#x3D;&quot;35&quot;
                     class&#x3D;&quot;d-inline-block align-text-top&quot;&gt;
                 &lt;span class&#x3D;&quot;ms-2&quot;&gt;Paradise Essence&lt;/span&gt;
@@ -551,18 +553,9 @@ export class LoginComponent {
                 &lt;/form&gt;
                 &lt;ul class&#x3D;&quot;navbar-nav mb-2 mb-lg-0 text-center&quot;&gt;
                     &lt;li class&#x3D;&quot;nav-item&quot;&gt;
-                        &lt;a class&#x3D;&quot;nav-link&quot; href&#x3D;&quot;/login&quot;&gt;
+                        &lt;a class&#x3D;&quot;nav-link&quot; routerLink&#x3D;&quot;/login&quot;&gt;
                             &lt;i class&#x3D;&quot;fas fa-user&quot;&gt;&lt;/i&gt;&lt;br&gt;
                             Ingresar
-                        &lt;/a&gt;
-                    &lt;/li&gt;
-                    &lt;li class&#x3D;&quot;nav-item position-relative&quot;&gt;
-                        &lt;a class&#x3D;&quot;nav-link&quot; href&#x3D;&quot;#&quot;&gt;
-                            &lt;i class&#x3D;&quot;fas fa-shopping-cart&quot;&gt;&lt;/i&gt;&lt;br&gt;
-                            Carrito
-                            &lt;span
-                                class&#x3D;&quot;badge bg-danger position-absolute top-0 start-100 translate-middle badge-cart-count&quot;
-                                style&#x3D;&quot;display: none;&quot;&gt;0&lt;/span&gt;
                         &lt;/a&gt;
                     &lt;/li&gt;
                 &lt;/ul&gt;
@@ -589,8 +582,8 @@ export class LoginComponent {
             &lt;/div&gt;
             &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-primary my-2&quot;&gt;Iniciar Sesión&lt;/button&gt;
         &lt;/form&gt;
-        &lt;p class&#x3D;&quot;mt-3&quot;&gt;¿Eres un cliente nuevo? &lt;a href&#x3D;&quot;/register&quot;&gt;Crear una cuenta&lt;/a&gt;&lt;/p&gt;
-        &lt;a href&#x3D;&quot;/recovery&quot;&gt;¿Olvidó su contraseña?&lt;/a&gt;
+        &lt;p class&#x3D;&quot;mt-3&quot;&gt;¿Eres un cliente nuevo? &lt;a routerLink&#x3D;&quot;/register&quot;&gt;Crear una cuenta&lt;/a&gt;&lt;/p&gt;
+        &lt;a routerLink&#x3D;&quot;/recovery&quot;&gt;¿Olvidó su contraseña?&lt;/a&gt;
     &lt;/div&gt;
     
 
@@ -606,7 +599,7 @@ export class LoginComponent {
             &lt;p class&#x3D;&quot;card-text&quot;&gt;Sumérgete en una experiencia sensorial con nuestras exquisitas fragancias. Encuentra la
                 perfecta para cada ocasión y deja que Paradise Essence te transporte a un paraíso olfativo inigualable.
             &lt;/p&gt;
-            &lt;a href&#x3D;&quot;/index&quot; class&#x3D;&quot;btn btn-primary&quot;&gt;Explorar Perfumes&lt;/a&gt;
+            &lt;a routerLink&#x3D;&quot;/index&quot; class&#x3D;&quot;btn btn-primary&quot;&gt;Explorar Perfumes&lt;/a&gt;
         &lt;/div&gt;
         &lt;div class&#x3D;&quot;card-footer text-body-secondary&quot;&gt;
             Síguenos en las redes sociales para descubrir las últimas novedades y ofertas exclusivas&lt;br&gt;
@@ -646,7 +639,7 @@ export class LoginComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="container-fluid body">    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">        <div class="container-fluid">            <a class="navbar-brand" href="/index">                <img src="assets/img/logoEmpresa.png" alt="Logo de la empresa" width="35" height="35"                    class="d-inline-block align-text-top">                <span class="ms-2">Paradise Essence</span>            </a>            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"                aria-label="Toggle navigation">                <span class="navbar-toggler-icon"></span>            </button>            <div class="collapse navbar-collapse" id="navbarSupportedContent">                <ul class="navbar-nav me-auto mb-2 mb-lg-0">                    <li class="nav-item dropdown">                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"                            aria-expanded="false">                            Marcas                        </a>                        <ul class="dropdown-menu">                            <li><a class="dropdown-item" href="#">Jean Paul Gaultier</a></li>                            <li><a class="dropdown-item" href="#">Versace</a></li>                            <li><a class="dropdown-item" href="#">Lattafa</a></li>                            <li><a class="dropdown-item" href="#">Afnan</a></li>                            <li><a class="dropdown-item" href="#">Moschino</a></li>                            <li><a class="dropdown-item" href="#">Paco Rabanne</a></li>                        </ul>                    </li>                    <li class="nav-item dropdown">                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"                            aria-expanded="false">                            Perfumes                        </a>                        <ul class="dropdown-menu">                            <li><a class="dropdown-item" href="#">Para Hombre</a></li>                            <li><a class="dropdown-item" href="#">Para Mujer</a></li>                            <li><a class="dropdown-item" href="#">Perfumes Unisex</a></li>                            <li><a class="dropdown-item" href="#">Perfumes Árabes</a></li>                        </ul>                    </li>                </ul>                <form class="d-flex flex-grow-1 mx-3" role="search">                    <input class="form-control me-2 flex-grow-1" type="search" placeholder="Buscar" aria-label="Search">                    <button class="btn btn-outline-success" type="submit">                        <i class="fas fa-search"></i>                    </button>                </form>                <ul class="navbar-nav mb-2 mb-lg-0 text-center">                    <li class="nav-item">                        <a class="nav-link" href="/login">                            <i class="fas fa-user"></i><br>                            Ingresar                        </a>                    </li>                    <li class="nav-item position-relative">                        <a class="nav-link" href="#">                            <i class="fas fa-shopping-cart"></i><br>                            Carrito                            <span                                class="badge bg-danger position-absolute top-0 start-100 translate-middle badge-cart-count"                                style="display: none;">0</span>                        </a>                    </li>                </ul>            </div>        </div>    </nav>    <div class="container">        <h2>Ingresar</h2>        <form [formGroup]="miFormulario" (ngSubmit)="submitForm()">            <div class="form-group">                <label for="email">Correo Electrónico:</label>                <input type="email" class="form-control" id="email" formControlName="email">            </div>            <div class="form-group">                <label for="password">Contraseña:</label>                <input type="password" class="form-control" id="password" formControlName="password">            </div>            <div *ngIf="formErrors.length > 0" class="alert alert-danger my-2">                <ul>                    <li *ngFor="let error of formErrors">{{ error }}</li>                </ul>            </div>            <button type="submit" class="btn btn-primary my-2">Iniciar Sesión</button>        </form>        <p class="mt-3">¿Eres un cliente nuevo? <a href="/register">Crear una cuenta</a></p>        <a href="/recovery">¿Olvidó su contraseña?</a>    </div>        <!--//////////FOOTER//////////-->    <footer class="card text-center">        <div class="card-header">            ¡Descubre la esencia del paraíso con Paradise Essence!        </div>        <div class="card-body">            <h5 class="card-title">¡Explora nuestro mundo de fragancias únicas!</h5>            <p class="card-text">Sumérgete en una experiencia sensorial con nuestras exquisitas fragancias. Encuentra la                perfecta para cada ocasión y deja que Paradise Essence te transporte a un paraíso olfativo inigualable.            </p>            <a href="/index" class="btn btn-primary">Explorar Perfumes</a>        </div>        <div class="card-footer text-body-secondary">            Síguenos en las redes sociales para descubrir las últimas novedades y ofertas exclusivas<br>            <a href="#" class="text-decoration-none text-body-secondary me-1"><i class="fab fa-facebook-f"></i></a>            <a href="#" class="text-decoration-none text-body-secondary me-1"><i class="fab fa-twitter"></i></a>            <a href="#" class="text-decoration-none text-body-secondary me-1"><i class="fab fa-instagram"></i></a>            <a href="#" class="text-decoration-none text-body-secondary me-1"><i class="fab fa-pinterest"></i></a>            <a href="#" class="text-decoration-none text-body-secondary"><i class="fab fa-youtube"></i></a>        </div>    </footer></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="container-fluid body">    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">        <div class="container-fluid">            <a class="navbar-brand" routerLink="/index">                <img src="assets/img/logoEmpresa.png" alt="Logo de la empresa" width="35" height="35"                    class="d-inline-block align-text-top">                <span class="ms-2">Paradise Essence</span>            </a>            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"                aria-label="Toggle navigation">                <span class="navbar-toggler-icon"></span>            </button>            <div class="collapse navbar-collapse" id="navbarSupportedContent">                <ul class="navbar-nav me-auto mb-2 mb-lg-0">                    <li class="nav-item dropdown">                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"                            aria-expanded="false">                            Marcas                        </a>                        <ul class="dropdown-menu">                            <li><a class="dropdown-item" href="#">Jean Paul Gaultier</a></li>                            <li><a class="dropdown-item" href="#">Versace</a></li>                            <li><a class="dropdown-item" href="#">Lattafa</a></li>                            <li><a class="dropdown-item" href="#">Afnan</a></li>                            <li><a class="dropdown-item" href="#">Moschino</a></li>                            <li><a class="dropdown-item" href="#">Paco Rabanne</a></li>                        </ul>                    </li>                    <li class="nav-item dropdown">                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"                            aria-expanded="false">                            Perfumes                        </a>                        <ul class="dropdown-menu">                            <li><a class="dropdown-item" href="#">Para Hombre</a></li>                            <li><a class="dropdown-item" href="#">Para Mujer</a></li>                            <li><a class="dropdown-item" href="#">Perfumes Unisex</a></li>                            <li><a class="dropdown-item" href="#">Perfumes Árabes</a></li>                        </ul>                    </li>                </ul>                <form class="d-flex flex-grow-1 mx-3" role="search">                    <input class="form-control me-2 flex-grow-1" type="search" placeholder="Buscar" aria-label="Search">                    <button class="btn btn-outline-success" type="submit">                        <i class="fas fa-search"></i>                    </button>                </form>                <ul class="navbar-nav mb-2 mb-lg-0 text-center">                    <li class="nav-item">                        <a class="nav-link" routerLink="/login">                            <i class="fas fa-user"></i><br>                            Ingresar                        </a>                    </li>                </ul>            </div>        </div>    </nav>    <div class="container">        <h2>Ingresar</h2>        <form [formGroup]="miFormulario" (ngSubmit)="submitForm()">            <div class="form-group">                <label for="email">Correo Electrónico:</label>                <input type="email" class="form-control" id="email" formControlName="email">            </div>            <div class="form-group">                <label for="password">Contraseña:</label>                <input type="password" class="form-control" id="password" formControlName="password">            </div>            <div *ngIf="formErrors.length > 0" class="alert alert-danger my-2">                <ul>                    <li *ngFor="let error of formErrors">{{ error }}</li>                </ul>            </div>            <button type="submit" class="btn btn-primary my-2">Iniciar Sesión</button>        </form>        <p class="mt-3">¿Eres un cliente nuevo? <a routerLink="/register">Crear una cuenta</a></p>        <a routerLink="/recovery">¿Olvidó su contraseña?</a>    </div>        <!--//////////FOOTER//////////-->    <footer class="card text-center">        <div class="card-header">            ¡Descubre la esencia del paraíso con Paradise Essence!        </div>        <div class="card-body">            <h5 class="card-title">¡Explora nuestro mundo de fragancias únicas!</h5>            <p class="card-text">Sumérgete en una experiencia sensorial con nuestras exquisitas fragancias. Encuentra la                perfecta para cada ocasión y deja que Paradise Essence te transporte a un paraíso olfativo inigualable.            </p>            <a routerLink="/index" class="btn btn-primary">Explorar Perfumes</a>        </div>        <div class="card-footer text-body-secondary">            Síguenos en las redes sociales para descubrir las últimas novedades y ofertas exclusivas<br>            <a href="#" class="text-decoration-none text-body-secondary me-1"><i class="fab fa-facebook-f"></i></a>            <a href="#" class="text-decoration-none text-body-secondary me-1"><i class="fab fa-twitter"></i></a>            <a href="#" class="text-decoration-none text-body-secondary me-1"><i class="fab fa-instagram"></i></a>            <a href="#" class="text-decoration-none text-body-secondary me-1"><i class="fab fa-pinterest"></i></a>            <a href="#" class="text-decoration-none text-body-secondary"><i class="fab fa-youtube"></i></a>        </div>    </footer></div></div>'
     var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'IndexComponent', 'selector': 'app-index'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RecoveryComponent', 'selector': 'app-recovery'},{'name': 'RegisterComponent', 'selector': 'app-register'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'LoginComponent'};

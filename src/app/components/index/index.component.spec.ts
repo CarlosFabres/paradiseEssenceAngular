@@ -21,12 +21,18 @@ describe('IndexComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // 1. Verificar que el carrito de compras está vacío
+  /**
+  * @description Verificar que el carrito de compras está vacío.
+  * @returns {void}
+  **/
   it('should have empty cart', () => {
     expect(component.cart.length).toBe(0);
   });
 
-  // 2. Verificar que el carrito de compras se muestra/oculta
+  /**
+  * @description Verificar que el carrito de compras se muestra/oculta al activar el toggle.
+  * @returns {void}
+  **/
   it('should toggle the cart display', () => {
     expect(component.showCart).toBeFalse();
     component.toggleCart();
@@ -35,7 +41,10 @@ describe('IndexComponent', () => {
     expect(component.showCart).toBeFalse();
   });
 
-  // 3. Verificar que se puede añadir un producto al carrito
+  /**
+  * @description Verificar que se puede añadir un producto al carrito.
+  * @returns {void}
+  */
   it('should add a product to the cart', () => {
     const product = component.products[0];
     component.addToCart(product);
@@ -44,7 +53,10 @@ describe('IndexComponent', () => {
     expect(component.cart[0].quantity).toBe(1);
   });
 
-  // 4. Verificar que el filtro por precio funciona correctamente
+  /**
+  * @description Verificar que el filtro por precio funciona correctamente.
+  * @returns {void}
+  */
   it('should filter products by price', () => {
     component.priceFilter = '0-30000';
     component.applyFilters();

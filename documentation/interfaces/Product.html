@@ -412,6 +412,7 @@
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { FormsModule } from &#x27;@angular/forms&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
+import { RouterOutlet, RouterLink } from &#x27;@angular/router&#x27;;
 
 /**
  * @description
@@ -442,7 +443,7 @@ interface Product {
 @Component({
     selector: &#x27;app-admin&#x27;,
     standalone: true,
-    imports: [CommonModule, FormsModule],
+    imports: [CommonModule, FormsModule, RouterOutlet, RouterLink],
     templateUrl: &#x27;./admin.component.html&#x27;,
     styleUrls: [&#x27;./admin.component.scss&#x27;],
 })
