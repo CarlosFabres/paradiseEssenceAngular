@@ -182,7 +182,7 @@ export class IndexComponent implements OnInit {
 
     // Verificar sesión
     checkSession(): void {
-        if(typeof localStorage !== 'undefined') {
+        if (this.isLocalStorageAvailable()) {
             const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
             const usuarioActivo = usuarios.find((usuario: any) => usuario.sesion === true);
             this.sesionActiva = usuarioActivo ? true : false;
@@ -191,27 +191,44 @@ export class IndexComponent implements OnInit {
 
     // Cerrar sesión
     cerrarSesion(): void {
-        const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
-        const usuarioActivo = usuarios.find((usuario: any) => usuario.sesion === true);
+        if (this.isLocalStorageAvailable()) {
+            const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+            const usuarioActivo = usuarios.find((usuario: any) => usuario.sesion === true);
 
-        if (usuarioActivo) {
-            usuarioActivo.sesion = false;
-            localStorage.setItem('usuarios', JSON.stringify(usuarios));
-            this.sesionActiva = false;
-            this.router.navigate(['/index']);
+            if (usuarioActivo) {
+                usuarioActivo.sesion = false;
+                localStorage.setItem('usuarios', JSON.stringify(usuarios));
+                this.sesionActiva = false;
+                this.router.navigate(['/index']);
+            }
         }
     }
 
      saveCartToLocalStorage(): void {
-        localStorage.setItem('cart', JSON.stringify(this.cart));
+        if (this.isLocalStorageAvailable()) {
+            localStorage.setItem('cart', JSON.stringify(this.cart));
+        }
     }
 
     loadCartFromLocalStorage(): void {
-        const savedCart = localStorage.getItem('cart');
-        if (savedCart) {
-            this.cart = JSON.parse(savedCart);
-            this.updateCartItemCount();
-            this.updateCartTotal();
+        if (this.isLocalStorageAvailable()) {
+            const savedCart = localStorage.getItem('cart');
+            if (savedCart) {
+                this.cart = JSON.parse(savedCart);
+                this.updateCartItemCount();
+                this.updateCartTotal();
+            }
+        }
+    }
+
+    private isLocalStorageAvailable(): boolean {
+        try {
+            const testKey = 'test';
+            localStorage.setItem(testKey, testKey);
+            localStorage.removeItem(testKey);
+            return true;
+        } catch (e) {
+            return false;
         }
     }
 }
