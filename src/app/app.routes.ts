@@ -5,6 +5,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RecoveryComponent } from './components/recovery/recovery.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { ListaPersonasComponent } from './components/lista-personas/lista-personas.component';
 
 
 export const routes: Routes = [
@@ -14,5 +15,6 @@ export const routes: Routes = [
     { path: 'profile', component: ProfileComponent },
     { path: 'recovery', component: RecoveryComponent },
     { path: 'register', component: RegisterComponent },
-    { path: 'admin', component: AdminComponent}
+    { path: 'admin', component: AdminComponent},
+    { path: 'lista-personas', component: ListaPersonasComponent}
 ];
