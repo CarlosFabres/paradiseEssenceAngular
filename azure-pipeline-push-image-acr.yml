@@ -1,4 +1,4 @@
-atrigger:
+trigger:
   branches:
     include:
       - main
