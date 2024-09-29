@@ -1,13 +1,13 @@
-trigger:
+atrigger:
   branches:
     include:
       - main
 
 variables:
   # Variables de entorno
-  ACR_NAME: 'myappdevops9' # Colocar el nombre de tu ACR
-  IMAGE_NAME: 'myappdevops9' # Colocar el Nombre de Imagen
-  SERVICE_CONNECTION_NAME: 'dockers9' # Colocar nombre del Service Connection ubicado en Docker Registry-- Azure Container Registr
+  ACR_NAME: 'semana9acr' # Colocar el nombre de tu ACR
+  IMAGE_NAME: 'semana9imagen' # Colocar el Nombre de Imagen
+  SERVICE_CONNECTION_NAME: 'semana9scd' # Colocar nombre del Service Connection ubicado en Docker Registry-- Azure Container Registr
 
 jobs:
   - job: BuildAndPush
