@@ -5,9 +5,9 @@ trigger:
 
 variables:
   # Variables de entorno
-  ACR_NAME: 'acrgrupo9' # Colocar el nombre de tu ACR
-  IMAGE_NAME: 'dockergrupo9' # Colocar el Nombre de Imagen
-  SERVICE_CONNECTION_NAME: 'appimages' # Colocar nombre del Service Connection ubicado en Docker Registry-- Azure Container Registry
+  ACR_NAME: 'myappdevops9' # Colocar el nombre de tu ACR
+  IMAGE_NAME: 'myappdevops9' # Colocar el Nombre de Imagen
+  SERVICE_CONNECTION_NAME: 'servicegrupo9' # Colocar nombre del Service Connection ubicado en Docker Registry-- Azure Container Registry
 
 jobs:
   - job: BuildAndPush
