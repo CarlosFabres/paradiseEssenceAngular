@@ -4,11 +4,11 @@ trigger:
       - main
 
 variables:
-  VM_IP_PUBLICA: '20.109.7.173'  # Se debe colocar la IP pública de tu máquina virtual
-  IMAGE_NAME: 'myappdevops9'  # Se debe colocar el Nombre de la imagen que será descargada desde ACR
-  ACR_NAME: 'myappdevops9'  # Se debe colocar el Nombre de tu Azure Container Registry (ACR)
-  ACR_USERNAME: 'myappdevops9'  # Se debe colocar el Nombre de usuario del ACR
-  ACR_PASSWORD: '+jpeh5LwqOpIsLSI5Xks+vIyb0lwjjXuxrLxZHLHV1+ACRCGI0vO'  # Se debe colocar la Contraseña del ACR
+  VM_IP_PUBLICA: '20.109.45.118'  # Se debe colocar la IP pública de tu máquina virtual
+  IMAGE_NAME: 'semana9imagen'  # Se debe colocar el Nombre de la imagen que será descargada desde ACR
+  ACR_NAME: 'semana9acr'  # Se debe colocar el Nombre de tu Azure Container Registry (ACR)
+  ACR_USERNAME: 'semana9acr'  # Se debe colocar el Nombre de usuario del ACR
+  ACR_PASSWORD: '8WqOMSYYKgz0mq34MdMW+cn6Dtyvrarq/8fvD6nCHx+ACRA9s1is'  # Se debe colocar la Contraseña del ACR
 
 
 stages:
@@ -17,7 +17,7 @@ stages:
       - deployment: DeployToVM
         displayName: 'Deploy to VM'
         environment:
-          name: 'miVM-Azure'  # Nombre del entorno configurado en Azure DevOps
+          name: 'semana9vm'  # Nombre del entorno configurado en Azure DevOps
           resourceType: VirtualMachine  # Especifica que se conecta a una máquina virtual
         strategy:
           runOnce:
