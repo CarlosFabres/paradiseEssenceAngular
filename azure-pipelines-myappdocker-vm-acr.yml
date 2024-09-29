@@ -8,7 +8,7 @@ variables:
   IMAGE_NAME: 'myappdevops9'  # Se debe colocar el Nombre de la imagen que será descargada desde ACR
   ACR_NAME: 'myappdevops9'  # Se debe colocar el Nombre de tu Azure Container Registry (ACR)
   ACR_USERNAME: 'myappdevops9'  # Se debe colocar el Nombre de usuario del ACR
-  ACR_PASSWORD: '9JR5G0w6rsmUs8nBdng+rXb9+SQ2cpKpCVNJXk9TFM+ACRBSweU/'  # Se debe colocar la Contraseña del ACR
+  ACR_PASSWORD: '+jpeh5LwqOpIsLSI5Xks+vIyb0lwjjXuxrLxZHLHV1+ACRCGI0vO'  # Se debe colocar la Contraseña del ACR
 
 
 stages:
